@@ -16,13 +16,18 @@ public static class Arrays
         // be implemented by another person.
         
 
+        //My Comments
+       
+        //STEP 1 Create local variable using the 'double' as is required called 'result', 
+        // then we use a 'new' double 'length' to create the doubles with 'length' spaces in the array.
+        //STEP 2 Create a 'for' loop and declare an integer variable 'i' as the loop counter, the
+        //value stored in the loop counter is 0. The loop continues while the integer variable 'i',
+        // is less than 'length'. Then increase the value of 'i' in 1 after to change, 
+        // the position of the array.
+        //STEP 3 We access the array result at index 'i'. The value stored in the array is the 'number',
+        // multiplied by 'i + 1'.
+        //STEP 4 we return the array 'result'.
 
-        //In this function i need to create the code to return an array starting with 'number' followed by multiples of 'number'.
-        //For example MultiplesOf(3,5), where the 3 is the starting number and 5 is the number of multiples, would result in <double>{3,6,9,12,15}.
-        //step 1 Create name of the array using the 'double' as is required, then we use 'new double[length]' to create the doubles with length spaces in the array.
-        //step 2 Create a loop 'for'with specification, a count variable called 'i' which starts at 0 which is the position of the array
-        //the cicle will repeat it while length is minor then 'i'. Then increase the value of 'i' in 1 after to change the position of the array.
-        //step 3 Create another variable called result[i], it multiply the number by the [i] plus 1.
             double[] result = new double[length];
             for(int i = 0; i < length; i++)
             {
@@ -45,5 +50,34 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+
+        //My comments
+        //STEP 1 Create a local variable using the 'List<int>' system as is required, use
+        //the 'data' parameter as the value for the local variable.
+        //STEP 2 Create a 'for' loop and declare an integer variable with a value of 0,
+        // the loop continues while our integer variable is less than the 'amount' parameter, and the integer variable increases by 1 in each iteration.
+        //STEP 3 Store the last element of the list in a local variable.
+        //STEP 3 Create another loop, declare an integer variable and store the last element of the data.
+        //the loop continues while our integer variable is greater than zero, and the integer variable decreases by 1 in each iteration.
+        //STEP 4 Access at a specific value in the list.
+        //STEP 5 Replace the first element of the list for the stored value.
+
+
+        List<int> list = data;
+        
+        for (int times = 0; times < amount; times++)
+        {
+        int last = list[list.Count - 1];
+        for( int i = data.Count - 1; i > 0; i--)
+            {
+        
+            list[i] = list[i - 1];
+            
+            }
+        list[0] = last;
+
+        }
+        
     }
 }
