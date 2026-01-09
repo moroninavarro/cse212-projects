@@ -22,10 +22,9 @@ public static class Arrays
         // then we use a 'new' double 'length' to create the doubles with 'length' spaces in the array.
         //STEP 2 Create a 'for' loop and declare an integer variable 'i' as the loop counter, the
         //value stored in the loop counter is 0. The loop continues while the integer variable 'i',
-        // is less than 'length'. Then increase the value of 'i' in 1 after to change, 
-        // the position of the array.
+        // is less than 'length'. Then increase the value of the integer variable  by 1 in each iteration.
         //STEP 3 We access the array result at index 'i'. The value stored in the array is the 'number',
-        // multiplied by 'i + 1'.
+        // multiplied by the integer variable plus 1.
         //STEP 4 we return the array 'result'.
 
             double[] result = new double[length];
@@ -58,10 +57,10 @@ public static class Arrays
         //STEP 2 Create a 'for' loop and declare an integer variable with a value of 0,
         // the loop continues while our integer variable is less than the 'amount' parameter, and the integer variable increases by 1 in each iteration.
         //STEP 3 Store the last element of the list in a local variable.
-        //STEP 3 Create another loop, declare an integer variable and store the last element of the data.
+        //STEP 4 Create another loop, declare an integer variable and store the last element of the data.
         //the loop continues while our integer variable is greater than zero, and the integer variable decreases by 1 in each iteration.
-        //STEP 4 Access at a specific value in the list.
-        //STEP 5 Replace the first element of the list for the stored value.
+        //STEP 5 Access at a specific value in the list.
+        //STEP 6 Replace the first element of the list using the local variable in step 3.
 
 
         List<int> list = data;
