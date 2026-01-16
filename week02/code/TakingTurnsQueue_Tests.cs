@@ -11,7 +11,9 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: The test was failing because it did not followed the FIFO strategy,
+    // there was a problem to handle the turns for the "Person" and it displayed Sue, instead of Bob. 
+    // and the PersonQueue class was adding the item to the beginning of the queue which caused an error. 
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -32,7 +34,6 @@ public class TakingTurnsQueueTests
             {
                 Assert.Fail("Queue should have ran out of items by now.");
             }
-
             var person = players.GetNextPerson();
             Assert.AreEqual(expectedResult[i].Name, person.Name);
             i++;
@@ -43,7 +44,8 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: 
+    // Defect(s) Found: There wasn't a handler for the turns of the people. It did not followed the FIFO strategy,
+    // and the PersonQueue class was adding the item to the beginning of the queue.
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -85,7 +87,8 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: There wasn't conditions to manage multiple items with infinite and finite turns at the same time,
+    // and the PersonQueue class was adding the item to the beginning of the queue which caused an error.
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -116,7 +119,8 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: There wasn't conditions to manage multiple items with infinite and finite turns at the same time,
+    // and the PersonQueue class was adding the item to the beginning of the queue which caused an error.
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;
@@ -143,7 +147,8 @@ public class TakingTurnsQueueTests
     [TestMethod]
     // Scenario: Try to get the next person from an empty queue
     // Expected Result: Exception should be thrown with appropriate error message.
-    // Defect(s) Found: 
+    // Defect(s) Found: There wasn't conditions to manage the empty queueh,
+    // and there was an error in the PersonQueue class. It was adding the item to the beginning of the queue which caused an error.
     public void TestTakingTurnsQueue_Empty()
     {
         var players = new TakingTurnsQueue();
