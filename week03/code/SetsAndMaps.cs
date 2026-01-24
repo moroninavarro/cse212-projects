@@ -58,15 +58,23 @@ public static class SetsAndMaps
     public static Dictionary<string, int> SummarizeDegrees(string filename)
     {
         var degrees = new Dictionary<string, int>();
+        
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+
+            string education = fields[3].Trim(); 
+            
+              if(degrees.ContainsKey(education))
+                degrees[education] += 1;
+                
+            else
+                degrees[education] = 1;
         }
 
         return degrees;
     }
-
     /// <summary>
     /// Determine if 'word1' and 'word2' are anagrams.  An anagram
     /// is when the same letters in a word are re-organized into a 
@@ -86,9 +94,39 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
-    }
 
+        var anagrams = new Dictionary<char, int>();
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        foreach( var letter in word1)
+        {
+            if (anagrams.ContainsKey(letter))
+                anagrams[letter]++;
+            else
+                anagrams[letter] = 1;
+                
+        }    
+        foreach( var letter in word2)
+        {
+            
+            if(!anagrams.ContainsKey(letter))
+                return false;
+                anagrams[letter]--;
+        }
+
+         foreach( var invalid in anagrams)
+        {
+                if( invalid.Value != 0)
+           
+                return false;
+            
+        }
+
+
+        return true;
+    }
+    
     /// <summary>
     /// This function will read JSON (Javascript Object Notation) data from the 
     /// United States Geological Service (USGS) consisting of earthquake data.
