@@ -1,4 +1,5 @@
 using System.Collections;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 public static class Recursion
 {
@@ -53,9 +54,6 @@ public static class Recursion
         {
             for (var i = 0; i < letters.Length; i++)
             {
-                // var newword = word + letters[i];
-                // var newletter = letters.Length / (letters.Length - size);
-
                 var letternew = letters.Remove(i, 1);
                 PermutationsChoose(results, letternew, size, word + letters[i]);
           
@@ -107,6 +105,9 @@ public static class Recursion
     /// </summary>
     public static decimal CountWaysToClimb(int s, Dictionary<int, decimal>? remember = null)
     {
+        if (remember == null)
+            remember = new Dictionary<int, decimal>();
+
         // Base Cases
         if (s == 0)
             return 0;
@@ -118,9 +119,12 @@ public static class Recursion
             return 4;
 
         // TODO Start Problem 3
+        if (remember.ContainsKey(s))
+            return remember[s];
 
         // Solve using recursion
-        decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        decimal ways = CountWaysToClimb(s - 1, remember) + CountWaysToClimb(s - 2, remember) + CountWaysToClimb(s - 3, remember);
+        remember[s] = ways;
         return ways;
     }
 
@@ -140,6 +144,25 @@ public static class Recursion
     public static void WildcardBinary(string pattern, List<string> results)
     {
         // TODO Start Problem 4
+        if (!pattern.Contains("*"))
+        {
+            results.Add(pattern);
+            
+        }
+        else
+        {
+          var simbol = pattern.IndexOf("*");
+           
+           string solution1 = pattern.Substring(0, simbol);
+           string solution2 = pattern.Substring(simbol + 1);
+
+           string result1 = solution1 + "0" + solution2;
+           
+            string result2 = solution1 + "1" + solution2;
+
+            WildcardBinary(result1, results);
+            WildcardBinary(result2, results);
+        }
     }
 
     /// <summary>
